@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{ parent() }} - Estudiantes
+{% endblock %}
+{% block stylesheets %} {{ parent() }} {% endblock %}
+{% block body %}
+    {{ parent() }}
+    <div class="container p-5">
+        <div class="row p-5">
+            {{form(formulario)}}
+        </div>
+        <div class="row" id="lista_estudiantes">
+            <table class="table table-bordered table-hover">
+                {% for estudiante in estudiantes %}
+                    <tr id="{{estudiante.id}}">
+                        <td>
+                            {{estudiante.id}}  
+                        </td>
+                        <td>
+                            {{estudiante.nombre}}  
+                        </td>
+                        <td>
+                            {{estudiante.edad}}  
+                        </td>
+                        <td>
+                            {{estudiante.grado}}  
+                        </td>
+                        <td>
+                            <input class="btn btn-info btn-sm" type="button" value="Seleccionar" id = "seleccionarEstudiante" onclick="seleccionarEstudianteCalificacion({{estudiante.id}}, '{{estudiante.nombre}}')"> 
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="row" id="lista_materias">
+            <table class="table table-bordered table-hover">
+                {% for materia in materias %}
+                    <tr>
+                        <td>
+                            {{materia.id}}  
+                        </td>
+                        <td>
+                            {{materia.nombre}}  
+                        </td>
+                        <td>
+                            <input class="btn btn-info btn-sm" type="button" value="Seleccionar" id = "seleccionarEstudiante" onclick="seleccionarMateriaCalificacion({{materia.id}},'{{materia.nombre}}')"> 
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+    {% block javascripts %}
+    {{ parent() }}
+    {% endblock %}
+    
+    
+{% endblock %}

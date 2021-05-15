@@ -1,0 +1,24 @@
+<table class="table table-bordered table-hover">
+    {% for estudiante in estudiantes %}
+        <tr>
+            <td>
+                {{estudiante.id}}  
+            </td>
+            <td>
+                {{estudiante.nombre}}  
+            </td>
+            <td>
+                {{estudiante.edad}}  
+            </td>
+            <td>
+                {{estudiante.grado}}  
+            </td>
+            <td>
+                <input class="btn btn-info btn-sm" type="button" value="Editar" id = "editarEstudiante" id = "actualizarEstudiante" onclick="window.location='/estudiantes/actualizar/{{estudiante.id}}'"> 
+            </td>
+            <td>
+                <input class="btn btn-danger btn-sm" type="button" value="Eliminar" id="eliminarEstudiante" onclick="javascripts:eliminarEstudiante({{estudiante.id}})"> 
+            </td>
+        </tr>
+    {% endfor %}
+</table>

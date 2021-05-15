@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{ parent() }} - Asociar
+{% endblock %}
+
+{% block body %}
+
+
+<div class="contrainer">
+    {{form(formularioGeneral)}}
+    <input type="button" value="Vaciar campos" onclick="vaciarCampos()">
+</div>
+
+
+
+
+<div class="container">
+
+
+
+    <p class="justify-content-center"> Por favor seleccione una materia</p>
+    <div class="row" id="lista_estudiantes">
+        <table class="table table-bordered table-hover">
+            {% for estudiante in estudiantes %}
+                <tr id="{{estudiante.id}}">
+                    <td>
+                        {{estudiante.id}}  
+                    </td>
+                    <td>
+                        {{estudiante.nombre}}  
+                    </td>
+                    <td>
+                        {{estudiante.edad}}  
+                    </td>
+                    <td>
+                        {{estudiante.grado}}  
+                    </td>
+                    <td>
+                        <input class="btn btn-info btn-sm" type="button" value="Seleccionar" id = "actualizarEstudiante" onclick="seleccionarEstudiante({{estudiante.id}})"> 
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+
+    <p class="justify-content-center"> Por favor seleccione un estudiante</p>
+
+    <div class="row" id="lista_materias">
+        <table class="table table-bordered table-hover">
+            {% for materia in materias %}
+                <tr>
+                    <td>
+                        {{materia.id}}  
+                    </td>
+                    <td>
+                        {{materia.nombre}}  
+                    </td>
+                    <td>
+                        <input class="btn btn-info btn-sm" type="button" value="Seleccionar" id = "seleccionar" onclick="seleccionarMateria({{materia.id}})"> 
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+
+
+{% block javascripts %}
+{{ parent() }}
+{% endblock %}
+
+
+{% endblock %}

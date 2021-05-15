@@ -1,0 +1,18 @@
+<table class="table table-bordered table-hover">
+    {% for materia in materias %}
+        <tr>
+            <td>
+                {{materia.id}}  
+            </td>
+            <td>
+                {{materia.nombre}}  
+            </td>
+            <td>
+                <input class="btn btn-info btn-sm" type="button" value="Editar" id = "editarMateria"> 
+            </td>
+            <td>
+                <input class="btn btn-danger btn-sm" type="button" value="Eliminar" id = "eliminarMateria" onclick='javascripts:eliminarMateria({{materia.id}})'> 
+            </td>
+        </tr>
+    {% endfor %}
+</table>

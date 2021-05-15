@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{parent() }} - Materias
+{% endblock %}
+{% block stylesheets %} {{ parent() }} {% endblock %}
+{% block body %}
+    {{ parent() }}
+    <div class="container">
+        <div class="row">
+            {{  form_start(formulario,{'action':'#'}) }}
+                <div class="col">
+                    {{form_label(formulario.nombre)}}
+                </div>
+                <div class="col">
+                    {{ form_widget(formulario.nombre,{'attr':{'onkeyup':'javascripts:buscarMateria()'}}) }}
+                </div>
+            {{ form_end(formulario) }}
+        </div>
+
+
+        <div class="row" id="lista_materias">
+            <table class="table table-bordered table-hover">
+                {% for materia in materias %}
+                    <tr>
+                        <td>
+                            {{materia.id}}  
+                        </td>
+                        <td>
+                            {{materia.nombre}}  
+                        </td>
+                        <td>
+                            <input class="btn btn-info btn-sm" type="button" value="Editar" id = "actualizarEstudiante" onclick="window.location='/materias/actualizar/{{materia.id}}'"> 
+                        </td>
+                        <td>
+                            <input class="btn btn-danger btn-sm" type="button" value="Eliminar" id="eliminarMateria" onclick='javascripts:eliminarMateria({{materia.id}})'> 
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="row justify-content-center">
+            <a class="btn btn-primary" href="{{path('materias_registro')}}">Registrar nueva materia</a>
+        </div>
+    </div>
+
+    {% block javascripts %}
+    {{ parent() }}
+    {% endblock %}
+    
+    
+{% endblock %}

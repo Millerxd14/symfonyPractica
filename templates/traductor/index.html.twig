@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{ parent() }} - Traductor
+{% endblock %}
+
+{% block body %}
+{% block stylesheets %}
+{{ parent() }}
+{% endblock %}
+
+<div class="container">
+    <h1>Traductor</h1>
+
+    <div class="row">
+        <p> Por favor Escriba el texto, seleccione el idioma y pulse en traducir</p>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <textarea name="traducir" id="traducir" placeholder="Escriba el texto a traducir aquí"></textarea>
+            </div>
+            <div class="col-md-2">
+                <input type="button" value="Traducir" onclick="traducir()">
+                <select name="idioma" id="idioma">
+                    <option value="de">Alemán</option>
+                    <option value="en">Inglés</option>
+                </select>
+            </div>
+            <div class="col-md-5">
+                <textarea  name="traducido" id="traducido" readonly="true"></textarea>
+            </div>
+        </div>
+        
+    </div>
+</div>
+{% block javascripts %}
+{#{{ encore_entry_script_tags('app') }}#}
+{{ parent() }}
+<script src="{{ asset('js/traductor.js') }}"></script>
+
+{% endblock %}
+{% endblock %}

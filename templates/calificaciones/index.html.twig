@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{ parent() }} - Estudiantes
+{% endblock %}
+{% block stylesheets %} {{ parent() }} {% endblock %}
+{% block body %}
+    {{ parent() }}
+    <div class="container">
+        <div class="row">
+            {{  form_start(formulario,{'action':'#'}) }}
+                <div class="col">
+                    {{form_label(formulario.nombre)}}
+                    {{ form_widget(formulario.nombre,{'attr':{'onkeyup':'javascripts:buscarCalificacion()'}}) }}
+                </div>
+            {{ form_end(formulario) }}
+        </div>
+        <div class="row" id="lista_calificaciones">
+            <table class="table table-bordered table-hover">
+                {% for calificacion in calificaciones %}
+                    <tr id="{{calificacion.id}}">
+                        <td>
+                            {{calificacion.id}}  
+                        </td>
+                        <td>
+                            {{calificacion.nombreEstudiante}}  
+                        </td>
+                        <td>
+                            {{calificacion.nombreMateria}}  
+                        </td>
+                        <td>
+                            {{calificacion.calificacionFinal}}  
+                        </td>
+                        <td>
+                            <input class="btn btn-info btn-sm" type="button" value="Editar" id = "actualizarEstudiante" onclick="window.location='/calificaciones/actualizar/{{calificacion.id}}'"> 
+                        </td>
+                        <td>
+                            <input class="btn btn-danger btn-sm" type="button" value="Eliminar" id="eliminarEstudiante" onclick="javascripts:eliminarCalificacion({{calificacion.id}})"> 
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="row justify-content-center">
+            <a class="btn btn-primary" href="{{path('calificaciones_registro')}}">Registrar nueva calificacion</a>
+        </div>
+    </div>
+
+    {% block javascripts %}
+    {{ parent() }}
+    {% endblock %}
+    
+    
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Inicio
+{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Sección de inicio ✅</h1>
+    <p>Seleccione la acción que desea realizar</p>
+    <ul>
+        <li><button class="btn btn-default"><a href="{{ path('estudiantes') }}">Sección de estudiantes</a></button></li>
+        <li><button class="btn btn-default"><a href="{{ path('materias') }}">Sección de Materias</a></button></li>
+        <li><button class="btn btn-default"><a href="{{ path('estudiante_materia') }}">Asociar estudiante a una materia</a></button></li>
+        <li><button class="btn btn-default"><a href="{{ path('calificaciones') }}">Sección de Califiaciones</a></button></li>
+        <li><button class="btn btn-default"><a href="{{ path('graficas') }}">Sección de graficas</a></button></li>
+        <li><button class="btn btn-default"><a href="{{ path('traductor') }}">Traductor todo raro</a></button></li>
+
+    </ul>
+</div>
+{% endblock %}

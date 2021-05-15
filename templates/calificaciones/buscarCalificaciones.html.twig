@@ -1,0 +1,24 @@
+<table class="table table-bordered table-hover">
+    {% for calificacion in calificaciones %}
+        <tr id="{{calificacion.id}}">
+            <td>
+                {{calificacion.id}}  
+            </td>
+            <td>
+                {{calificacion.nombreEstudiante}}  
+            </td>
+            <td>
+                {{calificacion.nombreMateria}}  
+            </td>
+            <td>
+                {{calificacion.calificacionFinal}}  
+            </td>
+            <td>
+                <input class="btn btn-info btn-sm" type="button" value="Editar" id = "actualizarCalificacion" onclick="window.location='/calificaciones/actualizar/{{calificacion.id}}'"> 
+            </td>
+            <td>
+                <input class="btn btn-danger btn-sm" type="button" value="Eliminar" id="eliminarCalificacion" onclick="javascripts:eliminarCalificacion({{calificacion.id}})"> 
+            </td>
+        </tr>
+    {% endfor %}
+</table>
